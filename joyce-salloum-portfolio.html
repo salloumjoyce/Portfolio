@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyce Salloum · Marketing Leadership Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --ink: #1A1A1A;
+    --ink-mid: #3D3D3D;
+    --ink-soft: #6B6B6B;
+    --cream: #FAFAF7;
+    --white: #FFFFFF;
+    --rule: rgba(201,169,110,0.25);
+    --section-gap: 120px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: stretch; justify-content: space-between;
+    background: rgba(250,250,247,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600; letter-spacing: 0.08em;
+    color: var(--gold); text-decoration: none;
+    display: flex; align-items: center;
+    padding: 0 40px;
+    border-right: 1px solid var(--rule);
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex; list-style: none; flex: 1;
+  }
+  .nav-links li {
+    flex: 1; display: flex;
+    border-right: 1px solid var(--rule);
+  }
+  .nav-links li:last-child { border-right: none; }
+  .nav-links a {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-soft);
+    text-decoration: none; transition: all 0.2s;
+    padding: 22px 16px;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold);
+    transform: scaleX(0); transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); background: rgba(201,169,110,0.04); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-links a.active::after { transform: scaleX(1); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 60px;
+    padding-top: 80px;
+    gap: 80px;
+  }
+  .hero-left { padding-right: 40px; }
+  .hero-eyebrow {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--gold);
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 88px);
+    font-weight: 300; line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .hero-name em { font-style: italic; color: var(--gold); }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 2vw, 22px);
+    font-weight: 300; font-style: italic;
+    color: var(--ink-soft); margin-bottom: 40px; line-height: 1.5;
+  }
+  .hero-bio {
+    font-size: 14px; line-height: 1.85; color: var(--ink-mid);
+    max-width: 500px; margin-bottom: 48px;
+  }
+  .hero-contacts { display: flex; flex-direction: column; gap: 10px; }
+  .hero-contact-item {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 12px; color: var(--ink-soft); letter-spacing: 0.04em;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .hero-contact-item:hover { color: var(--gold); }
+  .hero-contact-item::before {
+    content: ''; width: 20px; height: 1px; background: currentColor; flex-shrink: 0;
+  }
+
+  /* HERO RIGHT — Stats */
+  .hero-right {
+    display: flex; flex-direction: column; gap: 0;
+    border-left: 1px solid var(--rule);
+    padding-left: 80px;
+  }
+  .stat-block {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .stat-block:last-child { border-bottom: none; }
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-weight: 300; line-height: 1;
+    color: var(--ink); letter-spacing: -0.02em;
+  }
+  .stat-number span { color: var(--gold); }
+  .stat-label {
+    font-size: 11px; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-soft); margin-top: 10px;
+  }
+
+  /* SECTIONS */
+  section { padding: var(--section-gap) 60px; }
+  section:nth-child(even) { background: var(--white); }
+
+  .section-header { margin-bottom: 64px; }
+  .section-eyebrow {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-eyebrow::before {
+    content: ''; display: block; width: 30px; height: 1px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300; line-height: 1.1; color: var(--ink);
+  }
+  .section-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 20px;
+    color: var(--ink-soft); margin-top: 10px;
+  }
+
+  /* EXPERTISE GRID */
+  .expertise-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+  }
+  .expertise-card {
+    padding: 44px 40px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.25s;
+  }
+  .expertise-card:hover { background: rgba(201,169,110,0.05); }
+  .expertise-card:nth-child(3n) { border-right: none; }
+  .expertise-card:nth-last-child(-n+3) { border-bottom: none; }
+  .expertise-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 300; color: var(--gold);
+    letter-spacing: 0.1em; margin-bottom: 20px;
+  }
+  .expertise-title {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--ink); margin-bottom: 12px; text-transform: uppercase;
+  }
+  .expertise-desc {
+    font-size: 13px; line-height: 1.7; color: var(--ink-soft);
+  }
+
+  /* TIMELINE */
+  .timeline { position: relative; max-width: 800px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 1px; background: var(--rule);
+  }
+  .timeline-item {
+    display: grid; grid-template-columns: 180px 1fr;
+    gap: 40px; padding: 40px 0 40px 40px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -4px; top: 48px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--cream); border: 1px solid var(--gold);
+  }
+  .timeline-item.current::before { background: var(--gold); }
+  .timeline-date {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold); padding-top: 4px;
+  }
+  .timeline-badge {
+    display: inline-block; margin-top: 8px;
+    font-size: 9px; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--white);
+    background: var(--gold); padding: 3px 10px;
+  }
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400; color: var(--ink); margin-bottom: 6px;
+  }
+  .timeline-company {
+    font-size: 12px; font-weight: 400; color: var(--ink-soft);
+    letter-spacing: 0.06em;
+  }
+
+  /* RESULTS */
+  .results-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; background: var(--rule);
+  }
+  .result-card {
+    background: var(--white); padding: 52px 44px;
+    transition: background 0.2s;
+  }
+  section:nth-child(even) .result-card { background: var(--cream); }
+  .result-card:hover { background: rgba(201,169,110,0.06); }
+  .result-metric {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px; font-weight: 300; color: var(--ink);
+    line-height: 1; letter-spacing: -0.02em; margin-bottom: 4px;
+  }
+  .result-metric span { color: var(--gold); }
+  .result-headline {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink); margin-bottom: 10px; margin-top: 16px;
+  }
+  .result-detail {
+    font-size: 12px; line-height: 1.75; color: var(--ink-soft);
+  }
+
+  /* BRANDS */
+  .brands-section { text-align: center; }
+  .brands-list {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 12px; margin-top: 48px;
+  }
+  .brand-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--ink-mid);
+    border: 1px solid var(--rule); padding: 10px 20px;
+    transition: all 0.2s;
+  }
+  .brand-tag:hover {
+    background: var(--gold); color: var(--white); border-color: var(--gold);
+  }
+
+  /* AWARDS */
+  .awards-list { display: flex; flex-direction: column; gap: 0; }
+  .award-item {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center; gap: 40px;
+    padding: 36px 0; border-bottom: 1px solid var(--rule);
+  }
+  .award-item:first-child { border-top: 1px solid var(--rule); }
+  .award-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 6px;
+  }
+  .award-desc { font-size: 13px; color: var(--ink-soft); }
+  .award-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-style: italic; color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* CREDENTIALS */
+  .credentials-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 60px; }
+  .cred-section-title {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--rule);
+  }
+  .cred-item { margin-bottom: 24px; }
+  .cred-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 4px;
+  }
+  .cred-school {
+    font-size: 12px; color: var(--ink-soft); letter-spacing: 0.04em;
+  }
+  .cert-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .cert-list li {
+    font-size: 12px; color: var(--ink-mid); line-height: 1.6;
+    padding-left: 16px; position: relative;
+  }
+  .cert-list li::before {
+    content: '—'; position: absolute; left: 0; color: var(--gold);
+  }
+
+  /* REFERENCES */
+  .ref-card {
+    padding: 36px 0; border-bottom: 1px solid var(--rule);
+  }
+  .ref-card:first-child { border-top: 1px solid var(--rule); }
+  .ref-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 4px;
+  }
+  .ref-role { font-size: 12px; color: var(--gold); margin-bottom: 10px; letter-spacing: 0.04em; }
+  .ref-contact { font-size: 12px; color: var(--ink-soft); display: flex; gap: 24px; flex-wrap: wrap; }
+
+  /* FOOTER / CTA */
+  .footer {
+    background: var(--ink); color: var(--white);
+    padding: 100px 60px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; gap: 80px;
+  }
+  .footer-left {}
+  .footer-monogram {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px; font-weight: 300; color: var(--gold);
+    line-height: 1; margin-bottom: 24px;
+  }
+  .footer-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300; line-height: 1.2;
+    color: var(--white); margin-bottom: 16px;
+  }
+  .footer-sub {
+    font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7;
+  }
+  .footer-right { display: flex; flex-direction: column; gap: 20px; }
+  .footer-link {
+    display: flex; align-items: center; gap: 16px;
+    font-size: 13px; color: rgba(255,255,255,0.7);
+    text-decoration: none; transition: color 0.2s; letter-spacing: 0.04em;
+  }
+  .footer-link:hover { color: var(--gold); }
+  .footer-link-icon {
+    width: 36px; height: 36px; border: 1px solid rgba(201,169,110,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .footer-link:hover .footer-link-icon {
+    background: var(--gold); border-color: var(--gold);
+  }
+  .footer-divider {
+    border: none; border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 40px 0 0;
+    grid-column: 1 / -1;
+  }
+  .footer-bottom {
+    grid-column: 1 / -1;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 0.08em;
+  }
+
+  /* SCROLL ANIMATION */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 900px) {
+    nav { flex-wrap: wrap; }
+    .nav-logo { padding: 16px 20px; border-right: none; border-bottom: 1px solid var(--rule); width: 100%; }
+    .nav-links { overflow-x: auto; flex-wrap: nowrap; width: 100%; }
+    .nav-links li { flex: none; border-right: 1px solid var(--rule); }
+    .nav-links a { padding: 14px 16px; font-size: 9px; white-space: nowrap; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; gap: 60px; }
+    .hero-right { border-left: none; border-top: 1px solid var(--rule); padding-left: 0; padding-top: 40px; }
+    section { padding: 80px 24px; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .expertise-card { border-right: none !important; }
+    .results-grid { grid-template-columns: 1fr; }
+    .credentials-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer { grid-template-columns: 1fr; padding: 60px 24px; gap: 48px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">JS</a>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#journey">Journey</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left reveal">
+    <div class="hero-eyebrow">Marketing Leadership Portfolio</div>
+    <h1 class="hero-name">Joyce<br><em>Salloum</em></h1>
+    <p class="hero-title">Head of Marketing · Luxury & Premium Retail<br>GCC Specialist · Dubai, UAE</p>
+    <p class="hero-bio">Strategic, commercially driven marketing leader with 12+ years building brand equity and multi-market growth across a USD 200M+ luxury and premium portfolio. Proven at Chalhoub Group in converting global brand vision into high-impact GCC strategies.</p>
+    <div class="hero-contacts">
+      <a href="tel:+971569298929" class="hero-contact-item">+971 56 929 8929</a>
+      <a href="mailto:salloumjoyce@gmail.com" class="hero-contact-item">salloumjoyce@gmail.com</a>
+      <a href="https://www.linkedin.com/in/joyce-salloum-a8590b30/" class="hero-contact-item" target="_blank">linkedin.com/in/joyce-salloum</a>
+    </div>
+  </div>
+  <div class="hero-right reveal">
+    <div class="stat-block">
+      <div class="stat-number">12<span>+</span></div>
+      <div class="stat-label">Years in luxury & premium marketing</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number"><span>$</span>200<span>M+</span></div>
+      <div class="stat-label">Multi-brand portfolio governed</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number"><span>$</span>15<span>M+</span></div>
+      <div class="stat-label">Marketing P&L owned end-to-end</div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Core Expertise</div>
+    <h2 class="section-title">Where I create value</h2>
+  </div>
+  <div class="expertise-grid">
+    <div class="expertise-card reveal">
+      <div class="expertise-num">01</div>
+      <div class="expertise-title">Regional Brand Strategy</div>
+      <div class="expertise-desc">Market expansion & positioning across the GCC — translating global brand DNA into regional dominance.</div>
+    </div>
+    <div class="expertise-card reveal">
+      <div class="expertise-num">02</div>
+      <div class="expertise-title">Omnichannel Marketing</div>
+      <div class="expertise-desc">Retail, e-commerce & marketplace integration across Namshi, 6th Street, Amazon and flagship environments.</div>
+    </div>
+    <div class="expertise-card reveal">
+      <div class="expertise-num">03</div>
+      <div class="expertise-title">P&L & Marketing Mix Modelling</div>
+      <div class="expertise-desc">Full budget ownership & ROI optimisation — applying predictive analytics to maximise customer lifetime value.</div>
+    </div>
+    <div class="expertise-card reveal">
+      <div class="expertise-num">04</div>
+      <div class="expertise-title">Customer Acquisition & Lifecycle</div>
+      <div class="expertise-desc">CAC, LTV, segmentation & personalisation strategies that drive sustained share growth.</div>
+    </div>
+    <div class="expertise-card reveal">
+      <div class="expertise-num">05</div>
+      <div class="expertise-title">AI-Driven Marketing</div>
+      <div class="expertise-desc">Predictive analytics & data-led decisions — a pioneer in AI-driven marketing across the region.</div>
+    </div>
+    <div class="expertise-card reveal">
+      <div class="expertise-num">06</div>
+      <div class="expertise-title">Executive Stakeholder Relations</div>
+      <div class="expertise-desc">Board-level reporting & brand principal management across global luxury houses.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section>
+  <div class="section-header reveal brands-section">
+    <div class="section-eyebrow" style="justify-content:center;">Brand Portfolio</div>
+    <h2 class="section-title">Brands under my stewardship</h2>
+  </div>
+  <div class="brands-list reveal">
+    <span class="brand-tag">Lacoste</span>
+    <span class="brand-tag">GUESS</span>
+    <span class="brand-tag">Tumi</span>
+    <span class="brand-tag">Karl Lagerfeld</span>
+    <span class="brand-tag">Axel Arigato</span>
+    <span class="brand-tag">Vilebrequin</span>
+    <span class="brand-tag">MC2 Saint Barth</span>
+    <span class="brand-tag">Carolina Herrera NY</span>
+    <span class="brand-tag">AMI Paris</span>
+    <span class="brand-tag">Tag Heuer</span>
+    <span class="brand-tag">Longchamp</span>
+    <span class="brand-tag">Dsquared2</span>
+    <span class="brand-tag">Marc Jacobs</span>
+    <span class="brand-tag">Loewe</span>
+    <span class="brand-tag">Mulberry</span>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Career Journey</div>
+    <h2 class="section-title">16 years of progression<br>in luxury marketing</h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item current reveal">
+      <div>
+        <div class="timeline-date">2023 – Present</div>
+        <div class="timeline-badge">Current</div>
+      </div>
+      <div>
+        <div class="timeline-role">Head of Marketing</div>
+        <div class="timeline-company">Premium & Delegation Fashion · Chalhoub Group</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2021 – 2023</div>
+      <div>
+        <div class="timeline-role">Manager, Brand Marketing</div>
+        <div class="timeline-company">Accessories & Lifestyle · Chalhoub Group</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2018 – 2021</div>
+      <div>
+        <div class="timeline-role">Senior Regional Marketing Executive</div>
+        <div class="timeline-company">Fashion Division · Chalhoub Group</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2015 – 2018</div>
+      <div>
+        <div class="timeline-role">Marketing Executive</div>
+        <div class="timeline-company">Fashion Division · Chalhoub Group, UAE</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal">
+      <div class="timeline-date">2009 – 2015</div>
+      <div>
+        <div class="timeline-role">Senior Marketing Executive</div>
+        <div class="timeline-company">SKAFF · Lebanon</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Signature Results</div>
+    <h2 class="section-title">Campaigns that<br>moved the numbers</h2>
+  </div>
+  <div class="results-grid">
+    <div class="result-card reveal">
+      <div class="result-metric"><span>$</span>5.2<span>M</span></div>
+      <div class="result-headline">Ramadan Revenue — GUESS</div>
+      <div class="result-detail">58% sell-through on the Ramadan Capsule campaign.</div>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-metric">200<span>M</span></div>
+      <div class="result-headline">Reach — GUESS AlUla</div>
+      <div class="result-detail">71.6M impressions · $2.1M Earned Media Value from the AlUla activation.</div>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-metric"><span>+</span>170<span>%</span></div>
+      <div class="result-headline">Key Segment Uplift</div>
+      <div class="result-detail">Beach Takeover drove 7M reach and $2M Earned Media Value.</div>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-metric">#<span>1</span></div>
+      <div class="result-headline">Lacoste — KSA Brand Index</div>
+      <div class="result-detail">Top 5 in UAE. Flagship brand positioning sustained across the GCC.</div>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-metric"><span>~</span>120<span>%</span></div>
+      <div class="result-headline">TUMI Acquisition Target</div>
+      <div class="result-detail">Achieved despite significant market shifts in the region.</div>
+    </div>
+    <div class="result-card reveal">
+      <div class="result-metric"><span>$</span>4.1<span>M</span></div>
+      <div class="result-headline">Ramadan Revenue — Lacoste</div>
+      <div class="result-detail">Award-winning campaign execution, recognised two consecutive years.</div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section>
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Recognition</div>
+    <h2 class="section-title">Awarded, ranked & trusted</h2>
+  </div>
+  <div class="awards-list">
+    <div class="award-item reveal">
+      <div>
+        <div class="award-title">'Best Marketing Campaigns' — Lacoste</div>
+        <div class="award-desc">Awarded two consecutive years for campaign excellence and market impact.</div>
+      </div>
+      <div class="award-mark">Two consecutive years</div>
+    </div>
+    <div class="award-item reveal">
+      <div>
+        <div class="award-title">Lacoste #1 in KSA · Top 5 in UAE</div>
+        <div class="award-desc">Flagship brand positioning secured via Brand Index leadership.</div>
+      </div>
+      <div class="award-mark">Brand Index</div>
+    </div>
+    <div class="award-item reveal">
+      <div>
+        <div class="award-title">GUESS Top 3 in UAE · Top 4 in KSA</div>
+        <div class="award-desc">Sustained share growth across the GCC market.</div>
+      </div>
+      <div class="award-mark">GCC Market Share</div>
+    </div>
+    <div class="award-item reveal">
+      <div>
+        <div class="award-title">Axel Arigato — GCC Market Launch</div>
+        <div class="award-desc">High-impact entry strategy and flagship launch event for European brand entering the region.</div>
+      </div>
+      <div class="award-mark">Market Entry</div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Credentials</div>
+    <h2 class="section-title">Foundations & development</h2>
+  </div>
+  <div class="credentials-grid">
+    <div class="reveal">
+      <div class="cred-section-title">Education</div>
+      <div class="cred-item">
+        <div class="cred-degree">BA, Marketing & Advertising</div>
+        <div class="cred-school">Saint Joseph University of Beirut · 2006–2009</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-degree">Baccalaureate, Humanities</div>
+        <div class="cred-school">École Secondaire des Filles de la Charité · 2005–2006</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="cred-section-title">Training & Certifications</div>
+      <ul class="cert-list">
+        <li>Marketing Mix Modelling (MMM)</li>
+        <li>CRM & Customer Lifecycle Management</li>
+        <li>LTV & CAC Workshops</li>
+        <li>Digital Transformation & Omnichannel</li>
+        <li>Advanced Marketing & Brand Strategy</li>
+        <li>Women in Leadership</li>
+        <li>Emotional Intelligence (EQ)</li>
+        <li>AI Central · ThinkOmni Suite</li>
+        <li>AI Fundamentals, Brainstorming, Data Analysis — Google</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <div class="cred-section-title">References</div>
+      <div class="ref-card">
+        <div class="ref-name">Grace Khoury</div>
+        <div class="ref-role">Senior VP – Fashion MC, Chalhoub Group</div>
+        <div class="ref-contact">
+          <span>+971 50 459 8995</span>
+          <span>grace.khoury@chalhoub.com</span>
+        </div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-name">Arbi Triki</div>
+        <div class="ref-role">VP Premium & Delegation, Chalhoub Group</div>
+        <div class="ref-contact">
+          <span>+971 50 226 2708</span>
+          <span>Arbi.Triki@chalhoub.com</span>
+        </div>
+      </div>
+      <div class="ref-card">
+        <div class="ref-name">Laurène Pellegrini</div>
+        <div class="ref-role">Marketing Director EMEA, Lacoste</div>
+        <div class="ref-contact">
+          <span>+33 7 88 79 38 73</span>
+          <span>lpellegrini@lacoste.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER / CTA -->
+<footer class="footer" id="contact">
+  <div class="footer-left reveal">
+    <div class="footer-monogram">JS</div>
+    <h2 class="footer-headline">Let's build<br>what's next.</h2>
+    <p class="footer-sub">Open to senior marketing leadership opportunities across luxury, premium retail and distribution in the GCC and beyond.</p>
+  </div>
+  <div class="footer-right reveal">
+    <a href="tel:+971569298929" class="footer-link">
+      <div class="footer-link-icon">✆</div>
+      +971 56 929 8929
+    </a>
+    <a href="mailto:salloumjoyce@gmail.com" class="footer-link">
+      <div class="footer-link-icon">✉</div>
+      salloumjoyce@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/joyce-salloum-a8590b30/" class="footer-link" target="_blank">
+      <div class="footer-link-icon">in</div>
+      linkedin.com/in/joyce-salloum
+    </a>
+    <a href="#" class="footer-link">
+      <div class="footer-link-icon">↑</div>
+      Dubai, UAE
+    </a>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <span>Joyce Salloum · Marketing Leadership Portfolio</span>
+    <span>Dubai, UAE · 2025</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Active tab on scroll
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const navHeight = document.querySelector('nav').offsetHeight;
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === '#' + entry.target.id) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3, rootMargin: `-${navHeight}px 0px 0px 0px` });
+
+  sections.forEach(s => sectionObserver.observe(s));
+</script>
+</body>
+</html>
